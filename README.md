@@ -1,15 +1,8 @@
-Раз база — https://aldoshabu-del.github.io/-/, то внутренние страницы:
+# Коттеджный посёлок «Алхасты»
 
-Главная (лендинг):
-https://aldoshabu-del.github.io/-/
+Онлайн-демо сайта застройщика:
 
-Карта на весь экран:
-https://aldoshabu-del.github.io/-/index-map.html
-
-Страница для инвесторов:
-https://aldoshabu-del.github.io/-/investors.html
-
-Редактор участков (служебно):
-https://aldoshabu-del.github.io/-/editor.html
-
-Все относительные ссылки в нашем index.html и investors.html сделаны так, что будут работать при любом имени репозитория — в том числе и -.
+- Главная: https://aldoshabu-del.github.io/-/
+- Карта участков: https://aldoshabu-del.github.io/-/index-map.html
+- Инвесторам: https://aldoshabu-del.github.io/-/investors.html
+- Редактор участков (служебно): https://aldoshabu-del.github.io/-/editor.html
