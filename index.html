@@ -536,10 +536,18 @@
       background: #020617;
     }
 
-    .map-note {
+        .map-note {
       font-size: 11px;
       color: var(--text-muted);
       margin-top: 6px;
+    }
+
+    /* Подсказка и кнопка для мобильной версии карты */
+    .map-mobile-hint {
+      display: none;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 10px;
     }
 
     /* ---------- Документы / правила ---------- */
@@ -782,7 +790,7 @@
         grid-template-columns: minmax(0, 1fr);
       }
     }
-    @media (max-width: 720px) {
+        @media (max-width: 720px) {
       /* Более компактные отступы по всей странице */
       section {
         padding: 24px 12px;
@@ -793,6 +801,72 @@
         align-items: flex-start;
         gap: 6px;
       }
+
+      /* Шапка: бургер + логотип, без дубля кнопок */
+      .nav {
+        padding: 8px 10px;
+      }
+
+      .nav-left {
+        flex: 1;
+      }
+
+      .nav-cta {
+        display: none;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .nav-links.open {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        position: absolute;
+        left: 10px;
+        right: 10px;
+        top: 52px;
+        padding: 10px 12px;
+        border-radius: 18px;
+        background: rgba(15,23,42,0.98);
+        border: 1px solid rgba(148,163,184,0.6);
+        gap: 8px;
+        z-index: 40;
+      }
+
+      .nav-burger {
+        display: block;
+      }
+
+      .hero-inner {
+        padding-top: 20px;
+        padding-inline: 12px;
+      }
+
+      .grid-3,
+      .homes-grid {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      /* Карту делаем выше на мобилке */
+      .map-frame {
+        height: 700px;
+      }
+
+      /* На мобильном показываем подсказку и кнопку "во весь экран" */
+      .map-mobile-hint {
+        display: block;
+      }
+
+      .card,
+      .home-card,
+      .inf-right-card,
+      .contacts-card,
+      .contacts-form {
+        padding: 12px 12px 10px;
+      }
+    }
 
       /* Шапка: бургер + логотип, без дубля кнопок */
       .nav {
@@ -1218,7 +1292,19 @@
         </div>
       </div>
     </section>
-
+        <div class="map-mobile-hint">
+          На телефоне окно с параметрами участка и формой бронирования может не помещаться
+          внутри встроенного окна. Откройте карту во весь экран:
+          <br>
+          <a href="index-map.html"
+             class="btn btn-primary"
+             style="margin-top:6px;"
+             target="_blank"
+             rel="noopener">
+            Открыть карту на весь экран
+          </a>
+        </div>
+    
     <!-- ДОКУМЕНТЫ И ПРАВИЛА -->
     <section id="docs">
       <div class="section-inner">
