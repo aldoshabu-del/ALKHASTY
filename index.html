@@ -344,14 +344,15 @@
       color: #bfdbfe;
       font-size: 11px;
     }
-/* ---------- Сетки карточек ---------- */
 
-/* Премиальный двухколоночный вид карточек */
-.grid-3 {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 20px;
-}
+    /* ---------- Сетки карточек ---------- */
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+      align-items: stretch;
+    }
 
     .card {
       border-radius: 20px;
@@ -361,6 +362,9 @@
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .card::after {
@@ -393,6 +397,7 @@
       font-size: 13px;
       color: #d1d5db;
       line-height: 1.5;
+      flex: 1 1 auto;
     }
 
     .pill-row {
@@ -421,15 +426,15 @@
       background: rgba(250,204,21,0.08);
       color: #fef9c3;
     }
- 
-   /* ---------- Дома ---------- */
 
-/* Двухколоночная сетка карточек домов */
-.homes-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 18px;
-}
+    /* ---------- Дома ---------- */
+
+    .homes-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px;
+      align-items: stretch;
+    }
 
     .home-card {
       border-radius: 18px;
@@ -438,6 +443,9 @@
       border: 1px solid var(--border-soft);
       font-size: 12px;
       box-shadow: var(--shadow-soft);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .home-name {
@@ -537,18 +545,23 @@
       background: #020617;
     }
 
-        .map-note {
+    .map-note {
       font-size: 11px;
       color: var(--text-muted);
       margin-top: 6px;
     }
 
-    /* Подсказка и кнопка для мобильной версии карты */
     .map-mobile-hint {
       display: none;
       font-size: 12px;
       color: var(--text-muted);
       margin-top: 10px;
+    }
+
+    .map-mobile-hint-top {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 10px;
     }
 
     /* ---------- Документы / правила ---------- */
@@ -603,7 +616,6 @@
       width: fit-content;
     }
 
-    /* карточка "код посёлка" */
     .code-card {
       border-radius: 20px;
       padding: 16px;
@@ -611,6 +623,9 @@
       border: 1px solid var(--border-soft);
       box-shadow: var(--shadow-soft);
       font-size: 13px;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
     }
 
     .code-card-title {
@@ -758,13 +773,11 @@
 
     /* ---------- Адаптив ---------- */
 
-        @media (max-width: 960px) {
-      /* Чуть компактнее шапка на планшетах */
+    @media (max-width: 960px) {
       .nav {
         padding: 8px 12px;
       }
 
-      /* Hero в одну колонку, карточка уходит вниз */
       .hero-inner {
         grid-template-columns: minmax(0, 1fr);
         padding: 28px 16px 24px;
@@ -775,7 +788,6 @@
         margin-top: 4px;
       }
 
-      /* Карточки преимуществ и домов — в две колонки */
       .grid-3 {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
@@ -784,15 +796,14 @@
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
 
-      /* Инфраструктура, документы, контакты — в одну колонку */
       .inf-rows,
       .docs-grid,
       .contacts-grid {
         grid-template-columns: minmax(0, 1fr);
       }
     }
-        @media (max-width: 720px) {
-      /* Более компактные отступы по всей странице */
+
+    @media (max-width: 720px) {
       section {
         padding: 24px 12px;
       }
@@ -803,7 +814,6 @@
         gap: 6px;
       }
 
-      /* Шапка: бургер + логотип, без дубля кнопок */
       .nav {
         padding: 8px 10px;
       }
@@ -845,74 +855,6 @@
         padding-inline: 12px;
       }
 
-      .grid-3,
-      .homes-grid {
-        grid-template-columns: minmax(0, 1fr);
-      }
-
-      /* Карту делаем выше на мобилке */
-      .map-frame {
-        height: 700px;
-      }
-
-      /* На мобильном показываем подсказку и кнопку "во весь экран" */
-      .map-mobile-hint {
-        display: block;
-      }
-
-      .card,
-      .home-card,
-      .inf-right-card,
-      .contacts-card,
-      .contacts-form {
-        padding: 12px 12px 10px;
-      }
-    }
-
-      /* Шапка: бургер + логотип, без дубля кнопок */
-      .nav {
-        padding: 8px 10px;
-      }
-
-      .nav-left {
-        flex: 1;
-      }
-
-      .nav-cta {
-        display: none; /* CTA остаются в hero, чтобы не захламлять шапку */
-      }
-
-      .nav-links {
-        display: none;
-      }
-
-      .nav-links.open {
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        position: absolute;
-        left: 10px;
-        right: 10px;
-        top: 52px;
-        padding: 10px 12px;
-        border-radius: 18px;
-        background: rgba(15,23,42,0.98);
-        border: 1px solid rgba(148,163,184,0.6);
-        gap: 8px;
-        z-index: 40;
-      }
-
-      .nav-burger {
-        display: block;
-      }
-
-      /* Hero чуть компактнее сверху */
-      .hero-inner {
-        padding-top: 20px;
-        padding-inline: 12px;
-      }
-
-      /* Все сетки по одному столбцу */
       .grid-3,
       .homes-grid {
         grid-template-columns: minmax(0, 1fr);
@@ -922,7 +864,10 @@
         height: 420px;
       }
 
-      /* Карты/карточки — меньше внутренних отступов, чтобы экран «дышал» */
+      .map-mobile-hint {
+        display: block;
+      }
+
       .card,
       .home-card,
       .inf-right-card,
@@ -932,7 +877,6 @@
         padding: 12px 12px 10px;
       }
     }
-   
   </style>
 </head>
 
@@ -1146,7 +1090,7 @@
             </div>
             <div class="home-meta-row">
               <span class="pill">Участки 6–12 соток</span>
-              <span class="home-price"> 12,0 –13,5 млн ₽</span>
+              <span class="home-price">12,0 –13,5 млн ₽</span>
             </div>
             <div class="card-body">
               Дома для тех, кто хочет больше пространства и приватности.
@@ -1265,7 +1209,6 @@
     </section>
 
     <!-- КАРТА УЧАСТКОВ -->
-        <!-- КАРТА УЧАСТКОВ -->
     <section id="map" class="section-map">
       <div class="section-inner">
         <div class="section-heading">
@@ -1280,9 +1223,8 @@
           </p>
         </div>
 
-        <!-- Подсказка и кнопка "во весь экран" НАД картой -->
         <div class="map-mobile-hint-top">
-          
+          Откройте карту во весь экран:
           <br>
           <a href="index-map.html"
              class="btn btn-primary"
@@ -1294,7 +1236,6 @@
         </div>
 
         <div class="map-frame-wrap">
-          <!-- Встраиваем существующую карту index-map.html -->
           <iframe
             src="index-map.html"
             title="Карта участков коттеджного посёлка «Алхасты»"
@@ -1309,17 +1250,18 @@
         </div>
       </div>
     </section>
-        <div class="map-mobile-hint">
-          Откройте карту во весь экран:
-          <br>
-          <a href="index-map.html"
-             class="btn btn-primary"
-             style="margin-top:6px;"
-             target="_blank"
-             rel="noopener">
-            Открыть карту на весь экран
-          </a>
-        </div>
+
+    <div class="map-mobile-hint">
+      Откройте карту во весь экран:
+      <br>
+      <a href="index-map.html"
+         class="btn btn-primary"
+         style="margin-top:6px;"
+         target="_blank"
+         rel="noopener">
+        Открыть карту на весь экран
+      </a>
+    </div>
     
     <!-- ДОКУМЕНТЫ И ПРАВИЛА -->
     <section id="docs">
@@ -1336,7 +1278,6 @@
         </div>
 
         <div class="docs-grid">
-          <!-- Левая колонка: документы и инвест-портал -->
           <div>
             <div class="docs-list">
               <div class="doc-item">
@@ -1376,7 +1317,6 @@
             </div>
           </div>
 
-          <!-- Правая колонка: код посёлка -->
           <aside class="code-card">
             <div class="code-card-title">Код посёлка</div>
             <div class="code-card-main">
@@ -1434,7 +1374,6 @@
             </div>
           </div>
 
-          <!-- Форма заявки через FormSubmit -->
           <form class="contacts-form"
                 id="leadForm"
                 action="https://formsubmit.co/s1410@mail.RU"
@@ -1465,7 +1404,6 @@
                         placeholder="Удобное время для звонка, дополнительные вопросы…"></textarea>
             </div>
 
-            <!-- Скрытые поля FormSubmit -->
             <input type="hidden" name="_subject" value="Новая заявка на участок с сайта Алхасты">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_next" value="https://aldoshabu-del.github.io/-/#contacts">
@@ -1509,16 +1447,13 @@
 </div>
 
 <script>
-  // Год в подвале
   document.getElementById("year").textContent = new Date().getFullYear();
 
-  // Скролл к секции
   function scrollToId(id) {
     const el = document.getElementById(id);
     if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
   }
 
-  // Бургер-меню
   const navBurger = document.getElementById("navBurger");
   const navLinks = document.getElementById("navLinks");
 
@@ -1526,7 +1461,6 @@
     navLinks.classList.toggle("open");
   });
 
-  // Закрытие мобильного меню при клике по ссылке
   document.querySelectorAll("#navLinks a").forEach(a => {
     a.addEventListener("click", () => {
       navLinks.classList.remove("open");
