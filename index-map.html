@@ -415,17 +415,33 @@
       myMap.controls.remove("trafficControl");
       myMap.controls.remove("fullscreenControl");
 
-      fetch("plotsData.json")
-        .then(r => r.json())
-        .then(data => {
-          plotsData = data;
-          renderPlots();
-          renderTable();
-          setupFilters();
-          setupImportExport();
-          setupForm();
-        });
-    }
+    fetch('plotsData.refactored.json')
+  .then(r => r.json())
+  .then(data => {
+
+    // Адаптация новой схемы к старому формату карты
+    plotsData = data.plots.map(p => ({
+      id: p.number ?? p.legacy_id ?? p.id,
+      name: p.title || `Участок №${p.number ?? p.legacy_id}`,
+      status: p.status,
+      area: p.area?.text || '',
+      areaValue: p.area?.value ?? null,
+      price: p.price?.sale_text || '',
+      priceValue: p.price?.sale ?? null,
+      vri: p.usage?.vri || '',
+      purpose: p.usage?.purpose || '',
+      projectDescription: p.description || '',
+      comment: p.comment || '',
+      coords: Array.isArray(p.geometry?.coords) ? p.geometry.coords : []
+    }));
+
+    renderPlots();
+    renderTable();
+    setupFilters();
+    setupImportExport();
+    setupForm();
+  });
+
 
     function renderPlots() {
       plotsData.forEach(plot => {
